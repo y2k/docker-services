@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  trykt_bot:
+    image: y2khub/tryktbot
+    environment:
+      - TELEGRAM_TOKEN=${TRYKTBOT_TELEGRAM_TOKEN}
+
+  fsdn_bot:
+    image: y2khub/fsdn_bot
+    environment:
+      - TELEGRAM_TOKEN=${FSDNBOT_TELEGRAM_TOKEN}
+
+  watchcat_bot:
+    image: y2khub/watchcat-bot
+    command: /app/data/data.json
+    volumes:
+      - /root/watchcat_bot:/app/data
+    environment:
+      - TELEGRAM_TOKEN=${WATCHCATBOT_TELEGRAM_TOKEN}
