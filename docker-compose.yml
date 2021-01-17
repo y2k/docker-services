@@ -18,3 +18,9 @@ services:
       - /root/watchcat_bot:/app/data
     environment:
       - TELEGRAM_TOKEN=${WATCHCATBOT_TELEGRAM_TOKEN}
+
+  relaxcats_bot:
+    image: y2khub/relaxcats_bot
+    environment:
+      - TELEGRAM_TOKEN=${RELAXCATSBOT_TELEGRAM_TOKEN}
+      - GIPHY_API_KEY=${RELAXCATSBOT_GIPHY_API_KEY}
