@@ -1,6 +1,40 @@
 version: "3.8"
-
 services:
+  watchtower:
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=300
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  haproxy:
+    image: haproxy:2.3.2-alpine
+    ports:
+      - 80:80
+    volumes:
+      - /root/haproxy:/usr/local/etc/haproxy:ro
+
+  mongodb:
+    image: mongo:4.4.3-bionic
+    volumes:
+      - /root/mongodb:/data/db
+
+  spectator:
+    image: y2khub/spectator
+    depends_on:
+      - mongodb
+    command: /data/settings.yaml
+    volumes:
+      - /root/spectator:/data
+
+  remotecache:
+    image: y2khub/remotecache
+    volumes:
+      - /root/remote-cache:/app/cache
+
+  jr:
+    image: y2khub/jr
+
   trykt_bot:
     image: y2khub/tryktbot
     environment:
