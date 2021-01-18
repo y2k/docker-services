@@ -24,3 +24,9 @@ services:
     environment:
       - TELEGRAM_TOKEN=${RELAXCATSBOT_TELEGRAM_TOKEN}
       - GIPHY_API_KEY=${RELAXCATSBOT_GIPHY_API_KEY}
+
+  docker_bot:
+    image: y2khub/docker-bot
+    command: "${DOCKERBOT_TELEGRAM_TOKEN} ${DOCKERBOT_OWNER}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
