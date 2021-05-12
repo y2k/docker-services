@@ -1,5 +1,9 @@
 version: "3.8"
 services:
+  nuget_bot:
+    image: y2khub/nuget-bot
+    command: "${MYGETBOT_TOKEN} ${MYGETBOT_TELEGRAM_TOKEN} ${MYGETBOT_GITHUB_TOKEN}"
+
   watchtower:
     image: containrrr/watchtower
     environment:
