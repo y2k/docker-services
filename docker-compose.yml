@@ -6,6 +6,7 @@ services:
 
   watchtower:
     image: containrrr/watchtower
+    mem_limit: 512m
     environment:
       - WATCHTOWER_POLL_INTERVAL=300
     volumes:
@@ -13,6 +14,7 @@ services:
 
   haproxy:
     image: haproxy:2.3.2-alpine
+    mem_limit: 512m
     ports:
       - 80:80
     volumes:
@@ -20,11 +22,13 @@ services:
 
   mongodb:
     image: mongo:4.4.3-bionic
+    mem_limit: 512m
     volumes:
       - /root/mongodb:/data/db
 
   spectator:
     image: y2khub/spectator
+    mem_limit: 512m
     depends_on:
       - mongodb
     command: /data/settings.yaml
@@ -33,24 +37,29 @@ services:
 
   remotecache:
     image: y2khub/remotecache
+    mem_limit: 512m
     volumes:
       - /root/remote-cache:/app/cache
 
   jr:
+    mem_limit: 512m
     image: y2khub/jr
 
   trykt_bot:
     image: y2khub/tryktbot
+    mem_limit: 512m
     environment:
       - TELEGRAM_TOKEN=${TRYKTBOT_TELEGRAM_TOKEN}
 
   fsdn_bot:
     image: y2khub/fsdn_bot
+    mem_limit: 512m
     environment:
       - TELEGRAM_TOKEN=${FSDNBOT_TELEGRAM_TOKEN}
 
   watchcat_bot:
     image: y2khub/watchcat-bot
+    mem_limit: 512m
     command: /app/data/data.json
     volumes:
       - /root/watchcat_bot:/app/data
@@ -59,12 +68,14 @@ services:
 
   relaxcats_bot:
     image: y2khub/relaxcats_bot
+    mem_limit: 512m
     environment:
       - TELEGRAM_TOKEN=${RELAXCATSBOT_TELEGRAM_TOKEN}
       - GIPHY_API_KEY=${RELAXCATSBOT_GIPHY_API_KEY}
 
   docker_bot:
     image: y2khub/docker-bot
+    mem_limit: 512m
     command: "${DOCKERBOT_TELEGRAM_TOKEN} ${DOCKERBOT_OWNER}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
