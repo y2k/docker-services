@@ -82,3 +82,9 @@ services:
     command: "${DOCKERBOT_TELEGRAM_TOKEN} ${DOCKERBOT_OWNER}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  delete_messages_bot:
+    image: y2khub/delete_messages_bot
+    mem_limit: 512m
+    environment:
+      - TELEGRAM_TOKEN=${DELETE_SERVICE_MESSAGE_BOT_TELEGRAM}
