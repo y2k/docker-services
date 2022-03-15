@@ -1,5 +1,9 @@
 version: "3.8"
 services:
+  sync_server:
+    image: y2khub/sync_server
+    mem_limit: 512m
+
   nuget_bot:
     image: y2khub/nuget-bot
     mem_limit: 512m
