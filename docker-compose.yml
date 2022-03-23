@@ -4,7 +4,7 @@ services:
     image: y2khub/sync_server
     mem_limit: 512m
     volumes:
-      - /root/sync:/app/__data
+      - /root/sync:/app/app/__data
 
 #   nuget_bot:
 #     image: y2khub/nuget-bot
