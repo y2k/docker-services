@@ -23,6 +23,8 @@ services:
   haproxy:
     image: haproxy:2.5.5-alpine3.15
     mem_limit: 512m
+    depends_on:
+      - sync_server
     ports:
       - 80:80
     volumes:
