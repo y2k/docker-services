@@ -1,18 +1,5 @@
 version: "3.8"
 services:
-  sync_server:
-    image: y2khub/sync_server
-    mem_limit: 512m
-    volumes:
-      - /root/sync:/app/app/__data
-
-#   nuget_bot:
-#     image: y2khub/nuget-bot
-#     mem_limit: 512m
-#     command: "${MYGETBOT_TOKEN} ${MYGETBOT_TELEGRAM_TOKEN} ${MYGETBOT_GITHUB_TOKEN}"
-#     volumes:
-#       - /root/nuget-bot:/app/__data
-
   cwatchtower:
     image: containrrr/watchtower
     mem_limit: 512m
@@ -21,19 +8,25 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  sync_server:
+    image: y2khub/sync_server
+    mem_limit: 512m
+    volumes:
+      - $PWD/_data/sync_server:/app/app/__data
+
+  mongodb:
+    image: mongo:4.4.3-bionic
+    mem_limit: 512m
+    volumes:
+      - $PWD/_data/mongodb:/data/db
+
   haproxy:
     image: haproxy:2.5.5-alpine3.15
     mem_limit: 512m
     ports:
       - 80:80
     volumes:
-      - /root/haproxy:/usr/local/etc/haproxy:ro
-
-  mongodb:
-    image: mongo:4.4.3-bionic
-    mem_limit: 512m
-    volumes:
-      - /root/mongodb:/data/db
+      - $PWD/_data/haproxy:/usr/local/etc/haproxy:ro
 
   spectator:
     image: y2khub/spectator
@@ -42,13 +35,13 @@ services:
       - mongodb
     command: /data/settings.yaml
     volumes:
-      - /root/spectator:/data
+      - $PWD/_data/spectator:/data
 
   remotecache:
     image: y2khub/remotecache
     mem_limit: 512m
     volumes:
-      - /root/remote-cache:/app/cache
+      - $PWD/_data/remote-cache:/app/cache
 
   jr:
     mem_limit: 512m
@@ -60,18 +53,12 @@ services:
     environment:
       - TELEGRAM_TOKEN=${TRYKTBOT_TELEGRAM_TOKEN}
 
-#   fsdn_bot:
-#     image: y2khub/fsdn_bot
-#     mem_limit: 512m
-#     environment:
-#       - TELEGRAM_TOKEN=${FSDNBOT_TELEGRAM_TOKEN}
-
   watchcat_bot:
     image: y2khub/watchcat-bot
     mem_limit: 512m
     command: /app/data/data.json
     volumes:
-      - /root/watchcat_bot:/app/data
+      - $PWD/_data/watchcat_bot:/app/data
     environment:
       - TELEGRAM_TOKEN=${WATCHCATBOT_TELEGRAM_TOKEN}
 
