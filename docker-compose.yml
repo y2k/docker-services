@@ -13,6 +13,7 @@ services:
       HOST_ADDR: ${HOST_ADDR} 
     volumes:
       - ./_data/openvpn:/opt/Dockovpn_data
+      - ./_data/openvpn_conf:/doc/Dockovpn
 
   cwatchtower:
     image: containrrr/watchtower
