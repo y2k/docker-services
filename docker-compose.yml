@@ -2,6 +2,7 @@ version: "3.8"
 services:
   dockovpn:
     image: alekslitvinenk/openvpn
+    mem_limit: 512m
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
     cap_add:
@@ -11,7 +12,7 @@ services:
     environment:
       HOST_ADDR: ${HOST_ADDR} 
     volumes:
-      - ./_data/openvpn_conf:/doc/Dockovpn
+      - ./_data/openvpn:/opt/Dockovpn_data
 
   cwatchtower:
     image: containrrr/watchtower
@@ -31,6 +32,8 @@ services:
     hostname: mongodb
     image: mongo:4.4.3-bionic
     mem_limit: 512m
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     volumes:
       - $PWD/_data/mongodb:/data/db
 
