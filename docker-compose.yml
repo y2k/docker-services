@@ -20,8 +20,8 @@ services:
     volumes:
       - $PWD/_data/mongodb:/data/db
 
-  haproxy:
-    image: haproxy:2.5.5-alpine3.15
+  nginx:
+    image: y2khub/reverse-proxy
     mem_limit: 512m
     depends_on:
       - sync_server
@@ -29,8 +29,18 @@ services:
       - remotecache
     ports:
       - 80:80
-    volumes:
-      - $PWD/_data/haproxy:/usr/local/etc/haproxy:ro
+
+  # haproxy:
+  #   image: haproxy:2.5.5-alpine3.15
+  #   mem_limit: 512m
+  #   depends_on:
+  #     - sync_server
+  #     - jr
+  #     - remotecache
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - $PWD/_data/haproxy:/usr/local/etc/haproxy:ro
 
   spectator:
     image: y2khub/spectator
