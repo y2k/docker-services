@@ -28,6 +28,7 @@ services:
       - $PWD/_data/sync_server:/app/app/__data
 
   mongodb:
+    hostname: mongodb
     image: mongo:4.4.3-bionic
     mem_limit: 512m
     volumes:
@@ -60,9 +61,10 @@ services:
     mem_limit: 512m
     depends_on:
       - mongodb
-    command: /data/settings.yaml
+    environment:
+      - SPECTATOR_BOT_TOKEN=${SPECTATOR_BOT_TOKEN}
     volumes:
-      - $PWD/_data/spectator:/data
+      - $PWD/_data/spectator:/app/__data
 
   remotecache:
     image: y2khub/remotecache
