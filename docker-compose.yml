@@ -37,7 +37,7 @@ services:
     volumes:
       - $PWD/_data/mongodb:/data/db
 
-  nginx:
+  reverse-proxy:
     image: y2khub/reverse-proxy
     mem_limit: 512m
     depends_on:
