@@ -1,5 +1,5 @@
-docker-compose down
+# docker-compose down
 
 git pull
 
-docker-compose up -d
+docker-compose up -d --remove-orphans
