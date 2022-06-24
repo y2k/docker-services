@@ -1,5 +1,12 @@
 version: "3.8"
 services:
+  torrents_bot:
+    image: y2khub/torrents_bot
+    mem_limit: 512m
+    environment:
+      - CONFIG=$TORRENTS_BOT_CONFIG
+      - TELEGRAM_BOT_TOKEN=$TORRENTS_BOT_TOKEN
+
   dockovpn:
     image: alekslitvinenk/openvpn
     cap_add:
@@ -7,7 +14,7 @@ services:
     ports:
         - 1194:1194/udp
     environment:
-        HOST_ADDR: ${HOST_ADDR} 
+        HOST_ADDR: ${HOST_ADDR}
     volumes:
         - $PWD/_data/openvpn:/doc/Dockovpn
     mem_limit: 512m
