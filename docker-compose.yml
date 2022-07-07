@@ -16,7 +16,7 @@ services:
       - "4500:4500/udp"
     privileged: true
     # hostname: ipsec-vpn-server
-    container_name: ipsec-vpn-server
+    container_name: ipsec_vpn_server
     volumes:
       - $PWD/_data/ikev2_vpn_data:/etc/ipsec.d
       - /lib/modules:/lib/modules:ro
