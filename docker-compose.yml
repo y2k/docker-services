@@ -18,7 +18,7 @@ services:
     # hostname: ipsec-vpn-server
     container_name: ipsec-vpn-server
     volumes:
-      - ikev2-vpn-data:/etc/ipsec.d
+      - $PWD/_data/ikev2_vpn_data:/etc/ipsec.d
       - /lib/modules:/lib/modules:ro
 
   # dockovpn:
