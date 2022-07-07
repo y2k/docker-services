@@ -20,6 +20,8 @@ services:
     volumes:
       - $PWD/_data/ikev2_vpn_data:/etc/ipsec.d
       - /lib/modules:/lib/modules:ro
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
 
   # dockovpn:
   #   image: alekslitvinenk/openvpn
