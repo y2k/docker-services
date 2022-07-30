@@ -1,5 +1,9 @@
 version: "3.8"
 services:
+  github_pages_builder:
+    image: y2khub/github_pages_builder
+    mem_limit: 512m
+
   torrents_bot:
     image: y2khub/torrents_bot
     mem_limit: 512m
