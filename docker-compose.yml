@@ -3,8 +3,11 @@ services:
   github_pages_builder:
     image: y2khub/github_pages_builder
     mem_limit: 512m
+    privileged: true
     environment:
       - GPB_TOKEN=$GPB_TOKEN
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
   torrents_bot:
     image: y2khub/torrents_bot
