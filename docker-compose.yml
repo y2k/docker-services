@@ -1,4 +1,8 @@
 version: "3.8"
+
+volumes:
+  gpbuilder_shared:
+
 services:
   github_pages_builder:
     image: y2khub/github_pages_builder
@@ -8,6 +12,7 @@ services:
       - GPB_TOKEN=$GPB_TOKEN
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - gpbuilder_shared:/app/__build__
 
   torrents_bot:
     image: y2khub/torrents_bot
