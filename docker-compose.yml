@@ -48,7 +48,7 @@ services:
     volumes:
       - $PWD/_data/sync_server:/app/app/__data
 
-  reverse-proxy:
+  reverse_proxy:
     image: y2khub/reverse-proxy
     mem_limit: 512m
     depends_on:
