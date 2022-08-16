@@ -57,6 +57,7 @@ services:
       - remotecache
     ports:
       - 80:80
+      - 443:443
 
   spectator:
     image: y2khub/spectator
