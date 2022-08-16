@@ -56,8 +56,9 @@ services:
       - jr
       - remotecache
     ports:
-      - 80:80
       - 443:443
+    volumes:
+      - $PWD/_data/reverse_proxy:/etc/haproxy/ssl/
 
   spectator:
     image: y2khub/spectator
