@@ -21,18 +21,18 @@ services:
     environment:
       - CONFIG=$TORRENTS_BOT_CONFIG
 
-  vpn:
-    image: hwdsl2/ipsec-vpn-server
-    ports:
-      - "500:500/udp"
-      - "4500:4500/udp"
-    privileged: true
-    container_name: ipsec_vpn_server
-    volumes:
-      - $PWD/_data/ikev2_vpn_data:/etc/ipsec.d
-      - /lib/modules:/lib/modules:ro
-    labels:
-      - "com.centurylinklabs.watchtower.enable=false"
+#   vpn:
+#     image: hwdsl2/ipsec-vpn-server
+#     ports:
+#       - "500:500/udp"
+#       - "4500:4500/udp"
+#     privileged: true
+#     container_name: ipsec_vpn_server
+#     volumes:
+#       - $PWD/_data/ikev2_vpn_data:/etc/ipsec.d
+#       - /lib/modules:/lib/modules:ro
+#     labels:
+#       - "com.centurylinklabs.watchtower.enable=false"
 
   cwatchtower:
     image: containrrr/watchtower
