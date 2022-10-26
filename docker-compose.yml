@@ -2,7 +2,7 @@ version: "3.8"
 
 volumes:
   gpbuilder_shared:
-    external: true
+#     external: true
 
 services:
   github_pages_builder:
