@@ -15,11 +15,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - gpbuilder_shared:/app/__build__
 
-  torrents_bot:
-    image: y2khub/torrents_bot
-    mem_limit: 512m
-    environment:
-      - CONFIG=$TORRENTS_BOT_CONFIG
+#   torrents_bot:
+#     image: y2khub/torrents_bot
+#     mem_limit: 512m
+#     environment:
+#       - CONFIG=$TORRENTS_BOT_CONFIG
 
 #   vpn:
 #     image: hwdsl2/ipsec-vpn-server
