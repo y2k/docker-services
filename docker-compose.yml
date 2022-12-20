@@ -78,20 +78,20 @@ services:
     mem_limit: 512m
     image: y2khub/jr
 
-  trykt_bot:
-    image: y2khub/tryktbot
-    mem_limit: 512m
-    environment:
-      - TELEGRAM_TOKEN=${TRYKTBOT_TELEGRAM_TOKEN}
+#   trykt_bot:
+#     image: y2khub/tryktbot
+#     mem_limit: 512m
+#     environment:
+#       - TELEGRAM_TOKEN=${TRYKTBOT_TELEGRAM_TOKEN}
 
-  watchcat_bot:
-    image: y2khub/watchcat-bot
-    mem_limit: 512m
-    command: /app/data/data.json
-    volumes:
-      - $PWD/_data/watchcat_bot:/app/data
-    environment:
-      - TELEGRAM_TOKEN=${WATCHCATBOT_TELEGRAM_TOKEN}
+#   watchcat_bot:
+#     image: y2khub/watchcat-bot
+#     mem_limit: 512m
+#     command: /app/data/data.json
+#     volumes:
+#       - $PWD/_data/watchcat_bot:/app/data
+#     environment:
+#       - TELEGRAM_TOKEN=${WATCHCATBOT_TELEGRAM_TOKEN}
 
   relaxcats_bot:
     image: y2khub/relaxcats_bot
