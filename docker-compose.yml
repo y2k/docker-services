@@ -103,7 +103,7 @@ services:
   docker_bot:
     image: y2khub/docker-bot
     mem_limit: 512m
-    command: "${DOCKERBOT_TELEGRAM_TOKEN} ${DOCKERBOT_OWNER} ${DOCKERBOT.ORIGIN}"
+    command: "${DOCKERBOT_TELEGRAM_TOKEN} ${DOCKERBOT_OWNER} ${DOCKERBOT_ORIGIN}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
