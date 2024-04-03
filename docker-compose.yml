@@ -52,7 +52,7 @@ services:
     image: y2khub/reverse-proxy
     mem_limit: 512m
     depends_on:
-      - sync_server
+      # - sync_server
       - jr
       - remotecache
     ports:
