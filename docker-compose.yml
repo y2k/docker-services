@@ -42,11 +42,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  sync_server:
-    image: y2khub/sync_server
-    mem_limit: 512m
-    volumes:
-      - $PWD/_data/sync_server:/app/app/__data
+  # sync_server:
+  #   image: y2khub/sync_server
+  #   mem_limit: 512m
+  #   volumes:
+  #     - $PWD/_data/sync_server:/app/app/__data
 
   reverse_proxy:
     image: y2khub/reverse-proxy
@@ -60,13 +60,13 @@ services:
     volumes:
       - $PWD/_data/reverse_proxy:/etc/haproxy/ssl/
 
-  spectator:
-    image: y2khub/spectator
-    mem_limit: 512m
-    environment:
-      - SPECTATOR_BOT_TOKEN=${SPECTATOR_BOT_TOKEN}
-    volumes:
-      - $PWD/_data/spectator:/app/__data
+  # spectator:
+  #   image: y2khub/spectator
+  #   mem_limit: 512m
+  #   environment:
+  #     - SPECTATOR_BOT_TOKEN=${SPECTATOR_BOT_TOKEN}
+  #   volumes:
+  #     - $PWD/_data/spectator:/app/__data
 
   remotecache:
     image: y2khub/remotecache
@@ -93,12 +93,12 @@ services:
 #     environment:
 #       - TELEGRAM_TOKEN=${WATCHCATBOT_TELEGRAM_TOKEN}
 
-  relaxcats_bot:
-    image: y2khub/relaxcats_bot
-    mem_limit: 512m
-    environment:
-      - TELEGRAM_TOKEN=${RELAXCATSBOT_TELEGRAM_TOKEN}
-      - GIPHY_API_KEY=${RELAXCATSBOT_GIPHY_API_KEY}
+  # relaxcats_bot:
+  #   image: y2khub/relaxcats_bot
+  #   mem_limit: 512m
+  #   environment:
+  #     - TELEGRAM_TOKEN=${RELAXCATSBOT_TELEGRAM_TOKEN}
+  #     - GIPHY_API_KEY=${RELAXCATSBOT_GIPHY_API_KEY}
 
   docker_bot:
     image: y2khub/docker-bot
